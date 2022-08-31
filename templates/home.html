@@ -3,14 +3,13 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1>Home</h1>
+  <h1>Example App With Logins</h1>
 
-<p>This website will ask you a series of questions, and then
-tell you what your answers were.  This is kind of silly, but it
-illustrates the idea of a "session" in a webapp&mdash;the thing that
-allows you to "remember" a user's answers from one page to another.</p>
+  {% if session.user %}
+   <p>Logged in as: {{session.user.login}} <a href="/logout">Logout</a></p>
+  {% else %}
+    <p>Please login!</p>
+  {% endif %}
 
-  <ul>
-    <li><a href="/page1">Get started</a></li
-  </ul>
+
 {% endblock %}

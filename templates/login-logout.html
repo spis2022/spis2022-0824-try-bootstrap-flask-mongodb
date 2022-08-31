@@ -1,0 +1,9 @@
+{% if session.user %}
+    <a href={{url_for("logout")}} class="btn btn-primary" role="button" >
+        Logout
+    </a>
+{% else %}
+     <a href={{url_for("login")}} class="btn btn-primary" role="button" >
+        Login
+    </a>
+{% endif %}

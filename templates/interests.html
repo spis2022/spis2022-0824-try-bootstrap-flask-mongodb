@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h1>Interests</h1>
+
+  <table id="interests" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Interest</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for interest in interests %}
+        <tr>
+          <td>{{ interest.name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+  {% if session.user %}
+   <h2>Add a new interest</h2>
+   <p>This allows every user to select whether they share this interest or not</p>
+
+   <form method="POST" action="/interest/add">
+    {{ form.csrf_token }}
+    {{ form.name.label }} {{ form.name(size=30) }}
+    <input type="submit" value="Add Interest">
+    </form>
+  {% else %}
+    <p>Please login if you want to add new interests</p>
+  {% endif %}
+
+{% endblock %}
